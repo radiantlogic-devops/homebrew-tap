@@ -6,47 +6,23 @@ require_relative "../custom_download_strategy.rb"
 class Eocctl < Formula
   desc "Official EOC CLI tool."
   homepage "https://github.com/radiantlogic-v8/eocctl"
-  version "0.1.0"
+  version "0.1.1"
+  depends_on :macos
 
-  on_macos do
-    if Hardware::CPU.intel?
-      url "https://github.com/radiantlogic-v8/eocctl/releases/download/v0.1.0/eocctl_Darwin_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "588eafeb41e9ace294b3c6152a49c155b065e8122b01b58810cff588669ddb08"
+  if Hardware::CPU.intel?
+    url "https://github.com/radiantlogic-v8/eocctl/releases/download/v0.1.1/eocctl_Darwin_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+    sha256 "dc13e3cdc797074f464add70b0ac714f3d6f0f38b5cd841f6029f86a741dbef1"
 
-      def install
-        bin.install "eocctl"
-      end
-    end
-    if Hardware::CPU.arm?
-      url "https://github.com/radiantlogic-v8/eocctl/releases/download/v0.1.0/eocctl_Darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-      sha256 "ae805c69f950f6080fa84df60018f2d828807bcc82ceac0770d5ecc7a77820c1"
-
-      def install
-        bin.install "eocctl"
-      end
+    def install
+      bin.install "eocctl"
     end
   end
+  if Hardware::CPU.arm?
+    url "https://github.com/radiantlogic-v8/eocctl/releases/download/v0.1.1/eocctl_Darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+    sha256 "5dd8e8cb83350ed195c939f4ca58d1d5733586a264a27971a1a92ed696511375"
 
-  on_linux do
-    if Hardware::CPU.intel?
-      if Hardware::CPU.is_64_bit?
-        url "https://github.com/radiantlogic-v8/eocctl/releases/download/v0.1.0/eocctl_Linux_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-        sha256 "424b1d1cc544eb483d8b4557d755e5f3f6f811a6d0e8ac097c1e5f0ce3be3be7"
-
-        def install
-          bin.install "eocctl"
-        end
-      end
-    end
-    if Hardware::CPU.arm?
-      if Hardware::CPU.is_64_bit?
-        url "https://github.com/radiantlogic-v8/eocctl/releases/download/v0.1.0/eocctl_Linux_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-        sha256 "f30896c1911f579850a049f6800ae682c4bdf0e99d2dec49f6c720361de34e4e"
-
-        def install
-          bin.install "eocctl"
-        end
-      end
+    def install
+      bin.install "eocctl"
     end
   end
 end
