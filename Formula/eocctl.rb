@@ -5,21 +5,21 @@
 require_relative "../custom_download_strategy.rb"
 class Eocctl < Formula
   desc "Official EOC CLI tool."
-  homepage "https://github.com/radiantlogic-v8/eocctl"
-  version "0.1.1"
+  homepage "https://github.com/radiantlogic-devops/eocctl"
+  version "0.1.2"
   depends_on :macos
 
   if Hardware::CPU.intel?
-    url "https://github.com/radiantlogic-v8/eocctl/releases/download/v0.1.1/eocctl_Darwin_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-    sha256 "dc13e3cdc797074f464add70b0ac714f3d6f0f38b5cd841f6029f86a741dbef1"
+    url "https://github.com/radiantlogic-devops/eocctl/releases/download/v0.1.2/eocctl_Darwin_x86_64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+    sha256 "f4dcfc1e4575832ff344cfe3c7a512fe8c0241b66d02214cd6d9aacdf4ae99bc"
 
     def install
       bin.install "eocctl"
     end
   end
   if Hardware::CPU.arm?
-    url "https://github.com/radiantlogic-v8/eocctl/releases/download/v0.1.1/eocctl_Darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
-    sha256 "5dd8e8cb83350ed195c939f4ca58d1d5733586a264a27971a1a92ed696511375"
+    url "https://github.com/radiantlogic-devops/eocctl/releases/download/v0.1.2/eocctl_Darwin_arm64.tar.gz", using: GitHubPrivateRepositoryReleaseDownloadStrategy
+    sha256 "28859e41aee48b50a5c940ddfe80a8e7f481071eed149994b7c7d050dbd81d31"
 
     def install
       bin.install "eocctl"
