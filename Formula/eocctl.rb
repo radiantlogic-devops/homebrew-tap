@@ -9,11 +9,9 @@ class Eocctl < Formula
     sha256 "ed82bd2813364cdd1aa536f3961c0ce3ba0023c4acf1e79abbde6abd1d44ebbb"
 
       def install
-        bin.install "rlitools"
-      end
-
-      def post_install
         system "#{bin}/rlitools", "download", "https://dist.saas.radiantlogic.com/releases/eocctl/v1.0.0-beta.1/darwin/eocctl-darwin-arm64"
+        bin.install "eocctl"
       end
+      
   end
 end
