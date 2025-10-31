@@ -1,3 +1,4 @@
+# 2025-10-31T17:03:50.370592+00:00
 class Eocctl < Formula
   desc "Official EOC CLI tool."
   homepage "https://github.com/radiantlogic-devops/eocctl"
@@ -6,10 +7,16 @@ class Eocctl < Formula
 
   if Hardware::CPU.arm?
     url "https://github.com/radiantlogic-devops/rlitools-dist/releases/download/v1.0.0/rlitools_1.0.0_darwin_arm64.tar.gz"
-    sha256 "6c876431316a658bb0bbfffa1b25243abaff1ae0713918c1644d85288678101a"
+    sha256 "ed82bd2813364cdd1aa536f3961c0ce3ba0023c4acf1e79abbde6abd1d44ebbb"
 
       def install
         system "./rlitools", "download", "https://dist.saas.radiantlogic.com/releases/eocctl/v1.0.0-beta.1/darwin/eocctl-darwin-arm64"
+        expected_sha = "30a993fc260ade4c4f621806062acf6382a57a6a4897c40bf60136ec8780fc68"
+        actual_sha = Digest::SHA256.file("eocctl").hexdigest
+
+        if actual_sha != expected_sha
+          odie "SHA256 mismatch for some_script.sh: expected #{expected_sha} but got #{actual_sha}"
+        end
         bin.install "eocctl"
       end
 
