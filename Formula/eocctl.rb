@@ -1,4 +1,4 @@
-# 2025-10-31T17:03:50.370592+00:00
+# 2025-10-31T17:08:21.764176+00:00
 class Eocctl < Formula
   desc "Official EOC CLI tool."
   homepage "https://github.com/radiantlogic-devops/eocctl"
@@ -11,7 +11,7 @@ class Eocctl < Formula
 
       def install
         system "./rlitools", "download", "https://dist.saas.radiantlogic.com/releases/eocctl/v1.0.0-beta.1/darwin/eocctl-darwin-arm64"
-        expected_sha = "30a993fc260ade4c4f621806062acf6382a57a6a4897c40bf60136ec8780fc68"
+        expected_sha = "adaddf05a1491d5f15d3fed8bde48c8d7b55f6beca424a5c510b481ef35b9c44"
         actual_sha = Digest::SHA256.file("eocctl").hexdigest
 
         if actual_sha != expected_sha
